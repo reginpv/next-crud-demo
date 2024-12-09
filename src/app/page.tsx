@@ -15,8 +15,7 @@ export default async function Home() {
     <>
       <div className="__cotainer container p-5">
         
-        <div className="flex flex-col sm:flex-row gap-5">
-          <FormFind />
+        <div className="flex flex-col sm:flex-row gap-5 justify-end">
 
           <div>
             <Link href="/book/add" className="button">Add book</Link>

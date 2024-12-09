@@ -1,8 +1,10 @@
-import FormUpdate from "@/components/FormUpdate";
+import FormUpdate from "@/components/FormUpdate"
 import prisma from "@/lib/prisma"
-import { redirect } from "next/navigation";
+import { redirect } from "next/navigation"
 
-export default async function Edit({ params }: { params: { id: number } }) {
+// Issue on params Next 15
+// https://github.com/orgs/community/discussions/142577
+export default async function Edit({ params }: any) {
 
   const book = await prisma.book.findUnique({
     where: {
