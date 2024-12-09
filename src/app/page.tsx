@@ -1,6 +1,6 @@
 import prisma from "@/lib/prisma"
 import Link from "next/link"
-import FormDelete from "@/components/FormDelete"
+import FormDelete from "@/components/FormDelete" 
 
 export default async function Home() {
 
