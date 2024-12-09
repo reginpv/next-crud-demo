@@ -1,7 +1,6 @@
 import prisma from "@/lib/prisma"
 import Link from "next/link"
 import FormDelete from "@/components/FormDelete"
-import FormFind from "@/components/FormFind"
 
 export default async function Home() {
 
