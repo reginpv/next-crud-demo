@@ -20,3 +20,13 @@ body {
 a {
   @apply underline;
 }
+
+input,
+select,
+textarea {
+  @apply border px-3 py-2;
+}
+
+button, .button {
+  @apply bg-gray-300 py-2 border-gray-300 border px-3 no-underline flex justify-center;
+}
