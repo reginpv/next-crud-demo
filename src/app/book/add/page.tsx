@@ -1,14 +1,6 @@
 import FormAdd from "@/components/FormAdd"
-import prisma from "@/lib/prisma"
-
 
 export default async function Add() {
-
-  const books = await prisma.book.findMany({
-    orderBy: {
-      id: 'desc',
-    }
-  })
 
   return (
     <>
