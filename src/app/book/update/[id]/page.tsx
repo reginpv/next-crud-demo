@@ -18,7 +18,7 @@ export default async function Edit({ params }: { params: { id: number } }) {
     <>
       <div className="__container container p-5">
         <div className="max-w-[680px] border p-5 sm:p-10 mx-auto">
-          <FormUpdate id={book.id} />
+          <FormUpdate book={book} />
         </div>
       </div>
     </>
