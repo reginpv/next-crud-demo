@@ -3,6 +3,29 @@
 import { redirect } from "next/navigation"
 import prisma from "@/lib/prisma"
 
+// Find book
+export async function searchBooksByTitle(searchTerm: string) {
+  if (!searchTerm) {
+    throw new Error("Search term is required")
+  }
+
+  const books = await prisma.book.findMany({
+    where: {
+      title: {
+        contains: searchTerm, 
+        mode: 'insensitive',
+      },
+    },
+  })
+
+  if (books.length === 0) {
+    throw new Error("No books found with the given search term")
+  }
+
+  return books
+}
+
+
 // Create a book
 export async function addBook(formData: FormData) {
 

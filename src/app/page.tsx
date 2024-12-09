@@ -1,6 +1,7 @@
 import prisma from "@/lib/prisma"
 import Link from "next/link"
 import FormDelete from "@/components/FormDelete"
+import FormFind from "@/components/FormFind"
 
 export default async function Home() {
 
@@ -15,15 +16,10 @@ export default async function Home() {
       <div className="__cotainer container p-5">
         
         <div className="flex flex-col sm:flex-row gap-5">
-          <form className="flex-1 flex w-full">
-            <div className="w-full flex">
-              <input type="text" name="search" placeholder="Search" className="flex-1" />
-              <button>Find</button>
-            </div>
-          </form>
+          <FormFind />
 
           <div>
-            <Link href="/add" className="button">Add book</Link>
+            <Link href="/book/add" className="button">Add book</Link>
           </div>
         </div>
 
@@ -34,19 +30,19 @@ export default async function Home() {
 
           {
             books.length > 0 ? 
-              <div>
+              <div className="flex flex-col gap-5">
                 {
                   books.map((book, i)=>(
-                    <div key={i} className="flex gap-10 items-center justify-between">
+                    <div key={i} className="flex gap-10 items-center justify-between border p-5">
                       <div>
-                        <div>{book.title}</div>
-                        <div>{book.author}</div>
-                        <div>{book.publishedAt.toISOString()}</div>
+                        <div className="text-xl font-semibold">{book.title}</div>
+                        <div className="opacity-75">By: {book.author}</div>
+                        <div className="opacity-75">{new Date(book.publishedAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</div>
                       </div>
                       <div>
-                        <ul className="flex gap-5">
+                        <ul className="flex flex-col sm:flex-row gap-5">
                           <li>
-                            <Link href={`/book/update/${book.id}`}>Edit</Link>
+                            <Link href={`/book/update/${book.id}`} className="button">Edit</Link>
                           </li>
                           <li>
                             <FormDelete id={book.id} />
